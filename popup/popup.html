@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GitHub 本地加速</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="panel">
+      <header class="topline">
+        <div class="mark" aria-hidden="true">GH</div>
+        <div>
+          <p class="eyebrow">LOCAL ROUTE</p>
+          <h1>GitHub 加速</h1>
+        </div>
+        <span id="statusDot" class="status-dot" aria-label="状态"></span>
+      </header>
+
+      <section class="route" aria-labelledby="routeTitle">
+        <div class="section-heading">
+          <h2 id="routeTitle">本机 HTTP 代理</h2>
+          <span id="routeState">读取中</span>
+        </div>
+        <div class="endpoint">
+          <label class="field host-field">
+            <span>地址</span>
+            <input id="host" type="text" value="127.0.0.1" autocomplete="off" spellcheck="false" />
+          </label>
+          <label class="field port-field">
+            <span>端口</span>
+            <input id="port" type="number" min="1" max="65535" value="7890" inputmode="numeric" />
+          </label>
+        </div>
+        <p class="hint">代理程序需已启动并提供 HTTP 代理协议。</p>
+      </section>
+
+      <section class="domains" aria-labelledby="domainsTitle">
+        <h2 id="domainsTitle">加速范围</h2>
+        <div class="domain-list">
+          <span>github.com</span>
+          <span>raw / codeload</span>
+          <span>GitHub 下载资源</span>
+        </div>
+        <p class="hint">其它网站仍使用当前网络连接。</p>
+      </section>
+
+      <div class="actions">
+        <button id="save" class="save-button" type="button" title="保存代理地址">
+          保存
+        </button>
+        <button id="toggle" class="toggle-button" type="button" disabled>
+          正在读取…
+        </button>
+      </div>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+      <footer>关闭加速会移除此扩展设置的代理，不影响其它扩展。</footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
